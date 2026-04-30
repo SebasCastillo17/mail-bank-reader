@@ -36,5 +36,5 @@ jobs:
           EOF
 
       - name: Ejecutar script
-        run: python loader.py
+        run: python automation_spreadsheet/loader.py
         continue-on-error: true
