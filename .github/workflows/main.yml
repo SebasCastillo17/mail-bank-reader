@@ -37,4 +37,3 @@ jobs:
 
       - name: Ejecutar script
         run: python automation_spreadsheet/loader.py
-        continue-on-error: true
