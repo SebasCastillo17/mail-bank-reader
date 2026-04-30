@@ -9,7 +9,7 @@ from mail_reader import obtener_gastos
 load_dotenv()
 
 JSON_PATH = os.getenv('JSON_PATH')
-EMAIL = os.getenv('MAIL')
+EMAIL = os.getenv('EMAIL')
 PASSWORD = os.getenv('PASSWORD')
 
 df = obtener_gastos (
