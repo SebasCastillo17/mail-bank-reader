@@ -13,7 +13,10 @@ jobs:
       MAIL: ${{ secrets.MAIL }}
       PASSWORD: ${{ secrets.PASSWORD }}
       JSON_PATH: credentials.json
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+      # Nota: GitHub está forzando Node.js 24 para acciones JavaScript en runners.
+      # La advertencia sobre Node 20 se debe a que algunas acciones declaran
+      # compatibilidad con Node 20 en su metadata. Para eliminar la advertencia
+      # actualice las referencias de acciones a versiones que apunten a Node 24.
 
     steps:
       - name: Clonar repositorio
@@ -34,4 +37,8 @@ jobs:
           echo '${{ secrets.JSON }}' > credentials.json
 
       - name: Ejecutar script
-        run: python loader.py
+        run: |
+          python loader.py
+        env:
+          PYTHONUNBUFFERED: "1"
+          PYTHONTRACEMALLOC: "1"
